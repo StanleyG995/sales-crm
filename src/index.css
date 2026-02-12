@@ -1,0 +1,27 @@
+html {
+    font-family: 'Inter';
+}
+
+table {
+    border-collapse:collapse;
+    padding: 0 10px;
+}
+
+th {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-row {
+    border: none;
+    padding: 30px 0;
+}
+
+.table-row td {
+    border: none;
+    padding: 10px;
+}
+
+.table-row:nth-child(even) {
+    background: #eee;
+}

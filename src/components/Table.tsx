@@ -6,7 +6,7 @@ const Table = () => {
   const [companies, setCompanies] = useState<Company[]>(companiesData);
 
   return (
-    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+    <table style={{ width: '100%' }}>
       <thead>
         <tr>
           <th>ID</th>
@@ -21,7 +21,7 @@ const Table = () => {
       </thead>
       <tbody>
         {companies.map((company) => (
-          <tr key={company.id} style={{ borderBottom: '1px solid #ccc' }}>
+          <tr key={company.id} className='table-row'>
             <td>{company.id}</td>
             <td>{company.companyName}</td>
             <td>{company.industry}</td>
