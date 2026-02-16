@@ -1,10 +1,12 @@
-import List from './components/Table'
+import NewCompanyForm from './components/NewCompanyForm'
+import Table from './components/Table'
 
 function App() {
 
   return (
     <>
-      <List></List>
+      <NewCompanyForm/>
+      <Table></Table>
     </>
   )
 }

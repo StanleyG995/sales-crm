@@ -4,19 +4,22 @@ import type { Company } from '../types/company';
 
 const Table = () => {
   const [companies, setCompanies] = useState<Company[]>(companiesData);
+  const deleteCompany = (id:number) :void => {
+    setCompanies(prev => prev.filter(company => company.id !== id));
+  }
 
   return (
     <table style={{ width: '100%' }}>
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nazwa firmy</th>
-          <th>Branża</th>
+          <th>Name</th>
+          <th>Industry</th>
           <th>Email</th>
-          <th>Telefon</th>
-          <th>Sprzedaż (PLN)</th>
-          <th>Pracownik</th>
-          <th>Data dodania</th>
+          <th>Phone number</th>
+          <th>Total (PLN)</th>
+          <th>Employee</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +33,7 @@ const Table = () => {
             <td>{company.totalSales.toLocaleString('pl-PL')}</td>
             <td>{company.assignedEmployee}</td>
             <td>{company.createdAt}</td>
+            <td><button onClick = {() => deleteCompany(company.id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>
