@@ -1,44 +1,49 @@
-import { useState } from 'react';
-import { companiesData } from '../data/companies';
-import type { Company } from '../types/company';
+import { useState, useContext } from "react"
+import { FormContext } from '../context/FormContext'
 
 const Table = () => {
-  const [companies, setCompanies] = useState<Company[]>(companiesData);
-  const deleteCompany = (id:number) :void => {
-    setCompanies(prev => prev.filter(company => company.id !== id));
-  }
 
-  return (
-    <table style={{ width: '100%' }}>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Industry</th>
-          <th>Email</th>
-          <th>Phone number</th>
-          <th>Total (PLN)</th>
-          <th>Employee</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {companies.map((company) => (
-          <tr key={company.id} className='table-row'>
-            <td>{company.id}</td>
-            <td>{company.companyName}</td>
-            <td>{company.industry}</td>
-            <td>{company.email}</td>
-            <td>{company.phone}</td>
-            <td>{company.totalSales.toLocaleString('pl-PL')}</td>
-            <td>{company.assignedEmployee}</td>
-            <td>{company.createdAt}</td>
-            <td><button onClick = {() => deleteCompany(company.id)}>Delete</button></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
+  const context = useContext(FormContext);
+  if (!context) return null;
+  const { companies, setCompanies } = context;
 
-export default Table;
+	const deleteCompany = (id: number): void => {
+		setCompanies(prev => prev.filter(company => company.id !== id))
+	}
+
+	return (
+		<table style={{ width: "100%" }}>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Industry</th>
+					<th>Email</th>
+					<th>Phone number</th>
+					<th>Total (PLN)</th>
+					<th>Employee</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{companies.map(company => (
+					<tr key={company.id} className='table-row'>
+						<td>{company.id}</td>
+						<td>{company.companyName}</td>
+						<td>{company.industry}</td>
+						<td>{company.email}</td>
+						<td>{company.phone}</td>
+						<td>{company.totalSales.toLocaleString("pl-PL")}</td>
+						<td>{company.assignedEmployee}</td>
+						<td>{company.createdAt}</td>
+						<td>
+							<button onClick={() => deleteCompany(company.id)}>Delete</button>
+						</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	)
+}
+
+export default Table
