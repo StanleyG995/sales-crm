@@ -1,6 +1,6 @@
-import type { CompanyType } from "../types/CompanyType";
+import type { CompanyType } from "./CompanyType";
 
-export interface FormContextType {
+export interface CompaniesContextType {
   companies: CompanyType[];
   setCompanies: React.Dispatch<React.SetStateAction<CompanyType[]>>;
 };

@@ -1,6 +1,6 @@
-import type { Company } from "../types/CompanyType"
+import type { CompanyType } from "../types/CompanyType"
 
-export const companiesData: Company[] = [
+export const companiesData: CompanyType[] = [
 	{
 		id: 1,
 		companyName: "AlfaTech Solutions",

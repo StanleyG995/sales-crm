@@ -1,15 +1,6 @@
-import { useState, useEffect, useContext } from "react"
-import { FormContext } from '../context/FormContext'
-
-	
+import { useState, useEffect } from "react"
 
 const NewCompanyForm = () => {
-
-	const context = useContext(FormContext);
-  	if (!context) return null;
-  	const { companies, setCompanies } = context;
-
-	const [currentCompany, setCurrentCompany] = useState<null | Object>(null)
 
 	const [name, setName] = useState<null | string>("")
 	const [industry, setIndustry] = useState<null | string>("")
@@ -40,10 +31,6 @@ const NewCompanyForm = () => {
 
 	const handleEmployeeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setEmployee(e.target.value)
-	}
-
-    const addNewCompany = () => {
-		companies.push()
 	}
 
 	useEffect(() => {

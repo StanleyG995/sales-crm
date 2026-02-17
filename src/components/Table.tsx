@@ -1,11 +1,10 @@
-import { useState, useContext } from "react"
-import { FormContext } from '../context/FormContext'
+import { useContext } from "react"
+import { CompaniesContext } from "../context/CompaniesContext"
 
 const Table = () => {
-
-  const context = useContext(FormContext);
-  if (!context) return null;
-  const { companies, setCompanies } = context;
+	const context = useContext(CompaniesContext)
+	if (!context) return null
+	const { companies, setCompanies } = context
 
 	const deleteCompany = (id: number): void => {
 		setCompanies(prev => prev.filter(company => company.id !== id))
