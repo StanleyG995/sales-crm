@@ -92,6 +92,13 @@ const NewCompanyForm = () => {
 						assignedEmployee: employee,
 						createdAt: new Date().toISOString(),
 					})
+
+					setName("")
+					setIndustry("")
+					setEmail("")
+					setPhoneNumber("")
+					setTotal(0)
+					setEmployee("")
 				}}>
 				Add company
 			</button>
