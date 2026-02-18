@@ -16,8 +16,12 @@ export const CompaniesProvider = ({ children }:Props) => {
       setCompanies(prev => prev.filter((company) => company.id != id))
     }
 
+    const addCompany = (company: CompanyType) => {
+      setCompanies(prev => [...prev, company])
+    }
+
     return (
-        <CompaniesContext.Provider value={{ companies, deleteCompany }}>
+        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany }}>
           {children}
         </CompaniesContext.Provider>
     )

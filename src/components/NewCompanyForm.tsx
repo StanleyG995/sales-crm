@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { CompaniesContext } from "../context/CompaniesContext"
 
 const NewCompanyForm = () => {
+	const context = useContext(CompaniesContext)
+	if (!context) return null
+	const { addCompany } = context
 
-	const [name, setName] = useState<null | string>("")
-	const [industry, setIndustry] = useState<null | string>("")
-	const [email, setEmail] = useState<null | string>("")
-	const [phoneNumber, setPhoneNumber] = useState<null | string>("")
-	const [total, setTotal] = useState<null | number>(0)
-	const [employee, setEmployee] = useState<null | string>("")
+	const [name, setName] = useState<string>("")
+	const [industry, setIndustry] = useState<string>("")
+	const [email, setEmail] = useState<string>("")
+	const [phoneNumber, setPhoneNumber] = useState<string>("")
+	const [total, setTotal] = useState<number>(0)
+	const [employee, setEmployee] = useState<string>("")
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setName(e.target.value)
@@ -40,10 +44,10 @@ const NewCompanyForm = () => {
 	return (
 		<form>
 			<label>Name:</label>
-			<input onChange={handleNameChange}></input>
+			<input onChange={handleNameChange} value={name}></input>
 
 			<label>Industry:</label>
-			<select onChange={handleIndustryChange}>
+			<select onChange={handleIndustryChange} value={industry}>
 				<option>Healthcare</option>
 				<option>IT</option>
 				<option>Logistics</option>
@@ -56,16 +60,16 @@ const NewCompanyForm = () => {
 			</select>
 
 			<label>Email:</label>
-			<input onChange={handleEmailChange}></input>
+			<input onChange={handleEmailChange} value={email}></input>
 
 			<label>Phone number:</label>
-			<input onChange={handlePhoneNumberChange}></input>
+			<input onChange={handlePhoneNumberChange} value={phoneNumber}></input>
 
 			<label>Total:</label>
-			<input onChange={handleTotalChange}></input>
+			<input onChange={handleTotalChange} value={total}></input>
 
 			<label>Employee:</label>
-			<select onChange={handleEmployeeChange}>
+			<select onChange={handleEmployeeChange} value={employee}>
 				<option>Anna Nowak</option>
 				<option>Piotr Kowalski</option>
 				<option>Marta Zielińska</option>
@@ -73,7 +77,24 @@ const NewCompanyForm = () => {
 				<option>Katarzyna Wójcik</option>
 				<option>Michał Lewandowski</option>
 			</select>
-			<button>Add company</button>
+			<button
+				onClick={e => {
+					e.preventDefault()
+					if (!name || !industry || !email || !phoneNumber || !employee) return
+
+					addCompany({
+						id: Date.now(),
+						companyName: name,
+						industry: industry,
+						email: email,
+						phone: phoneNumber,
+						totalSales: total,
+						assignedEmployee: employee,
+						createdAt: new Date().toISOString(),
+					})
+				}}>
+				Add company
+			</button>
 		</form>
 	)
 }
