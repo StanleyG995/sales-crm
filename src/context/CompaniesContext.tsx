@@ -12,8 +12,12 @@ export const CompaniesContext = createContext<CompaniesContextType | null>(null)
 export const CompaniesProvider = ({ children }:Props) => {
     const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
 
+    const deleteCompany = (id:number):void => {
+      setCompanies(prev => prev.filter((company) => company.id != id))
+    }
+
     return (
-        <CompaniesContext.Provider value={{ companies, setCompanies }}>
+        <CompaniesContext.Provider value={{ companies, deleteCompany }}>
           {children}
         </CompaniesContext.Provider>
     )

@@ -4,11 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, setCompanies } = context
-
-	const deleteCompany = (id: number): void => {
-		setCompanies(prev => prev.filter(company => company.id !== id))
-	}
+	const { companies, deleteCompany } = context
 
 	return (
 		<table style={{ width: "100%" }}>
