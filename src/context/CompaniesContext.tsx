@@ -11,6 +11,7 @@ export const CompaniesContext = createContext<CompaniesContextType | null>(null)
 
 export const CompaniesProvider = ({ children }:Props) => {
     const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
+    const [sortByDateDirection, setSortByDateDirection] = useState<string>('ascending')
 
     const deleteCompany = (id:number):void => {
       setCompanies(prev => prev.filter((company) => company.id != id))
@@ -21,7 +22,14 @@ export const CompaniesProvider = ({ children }:Props) => {
     }
 
     const sortByDate = () => {
-      setCompanies(prev => [...prev].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+      if(sortByDateDirection === 'ascending'){
+        setCompanies(prev => [...prev].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+        setSortByDateDirection('descending')
+      } 
+      else {
+        setCompanies(prev => [...prev].sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+        setSortByDateDirection('ascending')
+      }
     }
 
     return (

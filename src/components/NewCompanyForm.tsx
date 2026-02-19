@@ -4,7 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const NewCompanyForm = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { addCompany } = context
+	const { addCompany, sortByDate } = context
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
@@ -101,6 +101,14 @@ const NewCompanyForm = () => {
 					setEmployee("")
 				}}>
 				Add company
+			</button>
+
+			<button
+				onClick={e => {
+					e.preventDefault()
+					sortByDate()
+				}}>
+				Sortuj po dacie
 			</button>
 		</form>
 	)
