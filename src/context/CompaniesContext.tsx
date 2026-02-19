@@ -20,8 +20,12 @@ export const CompaniesProvider = ({ children }:Props) => {
       setCompanies(prev => [...prev, company])
     }
 
+    const sortByDate = () => {
+      setCompanies(prev => [...prev].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+    }
+
     return (
-        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany }}>
+        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany, sortByDate }}>
           {children}
         </CompaniesContext.Provider>
     )

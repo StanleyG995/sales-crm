@@ -3,5 +3,6 @@ import type { CompanyType } from "./CompanyType";
 export interface CompaniesContextType {
   companies: CompanyType[];
   deleteCompany: (id: number) => void;
-  addCompany: (company: CompanyType) => void
+  addCompany: (company: CompanyType) => void,
+  sortByDate: () => void,
 };
