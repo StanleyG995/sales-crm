@@ -42,9 +42,12 @@ const NewCompanyForm = () => {
 	}, [name, industry, email, phoneNumber, total, employee])
 
 	return (
-		<form>
+		<form className='company-form'>
 			<label>Name:</label>
-			<input onChange={handleNameChange} value={name}></input>
+			<input
+				placeholder='Company name'
+				onChange={handleNameChange}
+				value={name}></input>
 
 			<label>Industry:</label>
 			<select onChange={handleIndustryChange} value={industry}>
@@ -60,16 +63,28 @@ const NewCompanyForm = () => {
 			</select>
 
 			<label>Email:</label>
-			<input onChange={handleEmailChange} value={email}></input>
+			<input
+				placeholder='Email address'
+				onChange={handleEmailChange}
+				value={email}></input>
 
 			<label>Phone number:</label>
-			<input onChange={handlePhoneNumberChange} value={phoneNumber}></input>
+			<input
+				placeholder='Phone number'
+				onChange={handlePhoneNumberChange}
+				value={phoneNumber}></input>
 
 			<label>Total:</label>
-			<input onChange={handleTotalChange} value={total}></input>
+			<input
+				placeholder='Total revenue'
+				onChange={handleTotalChange}
+				value={total}></input>
 
 			<label>Employee:</label>
 			<select onChange={handleEmployeeChange} value={employee}>
+				<option value='' disabled selected hidden>
+					Assigned employee
+				</option>
 				<option>Anna Nowak</option>
 				<option>Piotr Kowalski</option>
 				<option>Marta Zielińska</option>
@@ -77,39 +92,43 @@ const NewCompanyForm = () => {
 				<option>Katarzyna Wójcik</option>
 				<option>Michał Lewandowski</option>
 			</select>
-			<button
-				onClick={e => {
-					e.preventDefault()
-					if (!name || !industry || !email || !phoneNumber || !employee) return
 
-					addCompany({
-						id: Date.now(),
-						companyName: name,
-						industry: industry,
-						email: email,
-						phone: phoneNumber,
-						totalSales: total,
-						assignedEmployee: employee,
-						createdAt: new Date().toISOString(),
-					})
+			<div className='company-form-controls'>
+				<button
+					onClick={e => {
+						e.preventDefault()
+						if (!name || !industry || !email || !phoneNumber || !employee)
+							return
 
-					setName("")
-					setIndustry("")
-					setEmail("")
-					setPhoneNumber("")
-					setTotal(0)
-					setEmployee("")
-				}}>
-				Add company
-			</button>
+						addCompany({
+							id: Date.now(),
+							companyName: name,
+							industry: industry,
+							email: email,
+							phone: phoneNumber,
+							totalSales: total,
+							assignedEmployee: employee,
+							createdAt: new Date().toISOString(),
+						})
 
-			<button
-				onClick={e => {
-					e.preventDefault()
-					sortByDate()
-				}}>
-				Sortuj po dacie
-			</button>
+						setName("")
+						setIndustry("")
+						setEmail("")
+						setPhoneNumber("")
+						setTotal(0)
+						setEmployee("")
+					}}>
+					Add company
+				</button>
+
+				<button
+					onClick={e => {
+						e.preventDefault()
+						sortByDate()
+					}}>
+					Sortuj po dacie
+				</button>
+			</div>
 		</form>
 	)
 }
