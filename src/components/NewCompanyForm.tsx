@@ -43,14 +43,18 @@ const NewCompanyForm = () => {
 
 	return (
 		<form className='company-form'>
-			<label>Name:</label>
+			<label htmlFor='company-name'>Name:</label>
 			<input
+				id='company-name'
 				placeholder='Company name'
 				onChange={handleNameChange}
 				value={name}></input>
 
-			<label>Industry:</label>
-			<select onChange={handleIndustryChange} value={industry}>
+			<label htmlFor='company-industry'>Industry:</label>
+			<select
+				id='company-industry'
+				onChange={handleIndustryChange}
+				value={industry}>
 				<option>Healthcare</option>
 				<option>IT</option>
 				<option>Logistics</option>
@@ -62,26 +66,33 @@ const NewCompanyForm = () => {
 				<option>Construction</option>
 			</select>
 
-			<label>Email:</label>
+			<label htmlFor='company-email'>Email:</label>
 			<input
+				id='company-email'
 				placeholder='Email address'
 				onChange={handleEmailChange}
 				value={email}></input>
 
-			<label>Phone number:</label>
+			<label htmlFor='company-phonenumber'>Phone number:</label>
 			<input
+				id='company-phonenumber'
 				placeholder='Phone number'
 				onChange={handlePhoneNumberChange}
 				value={phoneNumber}></input>
 
-			<label>Total:</label>
+			<label htmlFor='company-total'>Total:</label>
 			<input
+				id='company-total'
 				placeholder='Total revenue'
 				onChange={handleTotalChange}
 				value={total}></input>
 
-			<label>Employee:</label>
-			<select onChange={handleEmployeeChange} value={employee}>
+			<label htmlFor='company-employee'>Employee:</label>
+
+			<select
+				id='company-employee'
+				onChange={handleEmployeeChange}
+				value={employee}>
 				<option value='' disabled selected hidden>
 					Assigned employee
 				</option>
