@@ -55,6 +55,9 @@ const NewCompanyForm = () => {
 				id='company-industry'
 				onChange={handleIndustryChange}
 				value={industry}>
+				<option value='' disabled selected hidden>
+					Company's industry
+				</option>
 				<option>Healthcare</option>
 				<option>IT</option>
 				<option>Logistics</option>
