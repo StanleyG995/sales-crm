@@ -1,7 +1,17 @@
 @keyframes fadeIn {
     from {
         opacity: 0%;
-        transform: translateY(-20px)
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0%;
+        transform: translateY(20px)
     }
 
     to {
@@ -82,20 +92,18 @@ th {
 
 .company-form {
     display: flex;
+    opacity: 0%;
     max-width: 600px;
     min-width: 400px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background: white;
     box-shadow: 3px 0px 10px #aaa;
     padding: 30px 20px;
     border-radius: 12px;
-    
+    animation: fadeInUp 0.3s 0.3s forwards ease-in-out;
 
     & input, select {
         margin-bottom: 10px;
@@ -134,14 +142,15 @@ th {
     min-height: 100vh;
     backdrop-filter: blur(2px);
     background: #ffffffaa;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s forwards ease-in-out;
 
     &--hidden {
         display: none;
     }
     &--visible {
-        animation: fadeIn 1s forwards;
         display: flex;
         overflow: hidden;
-        
     }
 }
