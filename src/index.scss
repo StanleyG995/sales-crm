@@ -45,11 +45,9 @@ html {
     cursor: pointer;
     z-index: 1;
     overflow: hidden;
-    background: #DE5D07;
-
-    
 
     &--primary {
+        background: #DE5D07;
         border: 1px solid #DE5D07;
         color: white;
 
@@ -62,10 +60,11 @@ html {
             border-radius: 50%;
             width: 50px;
             height: 50px;
-            background: #cc4100;
+            background: #ca2800;
             z-index:-1;
-            transition: transform 0.3s ease-in-out;
-            filter: blur(4px);
+            transition: transform 0.2s ease-in-out;
+            filter: blur(10px);
+            
         }
     
         &:hover::after {
