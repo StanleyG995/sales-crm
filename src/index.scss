@@ -1,3 +1,15 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+        transform: translateY(-20px)
+    }
+
+    to {
+        opacity: 100%;
+        transform: translateY(0px)
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -83,6 +95,7 @@ th {
     box-shadow: 3px 0px 10px #aaa;
     padding: 30px 20px;
     border-radius: 12px;
+    
 
     & input, select {
         margin-bottom: 10px;
@@ -121,10 +134,12 @@ th {
     min-height: 100vh;
     backdrop-filter: blur(2px);
     background: #ffffffaa;
+
     &--hidden {
         display: none;
     }
     &--visible {
+        animation: fadeIn 1s forwards;
         display: flex;
         overflow: hidden;
         
