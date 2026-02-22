@@ -10,7 +10,7 @@ const Table = () => {
 	const { companies, deleteCompany } = context
 
 	return (
-		<table style={{ width: "100%" }}>
+		<table className='table' style={{ width: "100%" }}>
 			<thead>
 				<tr>
 					<th>ID</th>

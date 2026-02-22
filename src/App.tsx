@@ -4,13 +4,14 @@ import Table from "./components/Table"
 import Header from "./components/Header"
 
 function App() {
-
 	return (
 		<>
 			<CompaniesProvider>
-				<Header/>
-				<NewCompanyForm />
-				<Table></Table>
+				<Header />
+				<div className='app'>
+					<NewCompanyForm />
+					<Table></Table>
+				</div>
 			</CompaniesProvider>
 		</>
 	)
