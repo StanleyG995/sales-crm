@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import { CompaniesContext } from "../context/CompaniesContext"
 
+import { FaSquarePlus } from "react-icons/fa6";
+
+
 const Header = () => {
 
     const context = useContext(CompaniesContext)
@@ -10,7 +13,7 @@ const Header = () => {
     return (
         <header className = 'app-header'>
             <button className='button button--primary' onClick = {toggleModalVisibility}>
-                Add company
+                <FaSquarePlus className='button-icon'/>Add company
             </button>
         </header>
     )

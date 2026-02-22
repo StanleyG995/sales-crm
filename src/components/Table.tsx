@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import { CompaniesContext } from "../context/CompaniesContext"
 
+import { FaTrashCan } from "react-icons/fa6";
+
+
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
@@ -32,7 +35,7 @@ const Table = () => {
 						<td>{company.assignedEmployee}</td>
 						<td>{company.createdAt}</td>
 						<td>
-							<button className='button' onClick={() => deleteCompany(company.id)}>Delete</button>
+							<button className='button button--danger' onClick={() => deleteCompany(company.id)}><FaTrashCan className='button-icon'/>Delete</button>
 						</td>
 					</tr>
 				))}

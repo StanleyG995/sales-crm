@@ -20,7 +20,9 @@ th {
 }
 
 .button {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
     padding: 10px 20px;
     border: 1px solid #bbb;
@@ -33,6 +35,17 @@ th {
         border: 1px solid #DE5D07;
         background: #DE5D07;
         color: white;
+    }
+
+    &--danger {
+        border: 1px solid #de0707;
+        background: none;
+        color: #de0707;
+        border: none;
+    }
+
+    &-icon {
+        margin-right: 12px; 
     }
 }
 
@@ -113,5 +126,7 @@ th {
     }
     &--visible {
         display: flex;
+        overflow: hidden;
+        
     }
 }
