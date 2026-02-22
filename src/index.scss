@@ -130,11 +130,18 @@ html {
     border: none;
     padding: 10px 20px;
     text-align: left;
-    border: none;
+}
+
+.table-row {
+    background: #fcfcfc;
 }
 
 .table-row:nth-child(even) {
-    background: #f7f7f7;
+    background: #f3f3f3;
+}
+
+.table-row:hover {
+    filter: brightness(0.95);
 }
 
 .company-form {
