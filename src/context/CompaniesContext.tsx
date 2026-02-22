@@ -13,6 +13,8 @@ export const CompaniesProvider = ({ children }:Props) => {
     const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
     const [sortByDateDirection, setSortByDateDirection] = useState<string>('ascending')
 
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(true)
+
     const deleteCompany = (id:number):void => {
       setCompanies(prev => prev.filter((company) => company.id != id))
     }
@@ -31,9 +33,14 @@ export const CompaniesProvider = ({ children }:Props) => {
         setSortByDateDirection('ascending')
       }
     }
+    
+    const toggleModalVisibility = () => {
+      isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true)
+    }
 
+    
     return (
-        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany, sortByDate }}>
+        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany, sortByDate, toggleModalVisibility, isModalOpen }}>
           {children}
         </CompaniesContext.Provider>
     )

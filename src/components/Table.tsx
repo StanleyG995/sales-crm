@@ -4,7 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, deleteCompany } = context
+	const { companies, deleteCompany, isModalOpen, toggleModalVisibility } = context
 
 	return (
 		<table style={{ width: "100%" }}>

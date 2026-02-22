@@ -4,7 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const NewCompanyForm = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { addCompany, sortByDate } = context
+	const { addCompany, toggleModalVisibility, isModalOpen } = context
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
@@ -38,11 +38,12 @@ const NewCompanyForm = () => {
 	}
 
 	useEffect(() => {
-		console.log(name, industry, email, phoneNumber, total, employee)
-	}, [name, industry, email, phoneNumber, total, employee])
+		console.log(name, industry, email, phoneNumber, total, employee, isModalOpen)
+	}, [name, industry, email, phoneNumber, total, employee, isModalOpen])
 
 	return (
-		<form className='company-form'>
+		<form className= {isModalOpen ? 'company form company-form--visible' : 'company form company-form--hidden'}>
+			<h2 className='form-title'>Add new company</h2>
 			<label htmlFor='company-name'>Name:</label>
 			<input
 				id='company-name'
@@ -138,9 +139,9 @@ const NewCompanyForm = () => {
 				<button
 					onClick={e => {
 						e.preventDefault()
-						sortByDate()
+						toggleModalVisibility()
 					}}>
-					Sortuj po dacie
+					Cancel
 				</button>
 			</div>
 		</form>

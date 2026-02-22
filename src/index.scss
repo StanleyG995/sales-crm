@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -34,7 +36,6 @@ th {
 .company-form {
     max-width: 600px;
     min-width: 400px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -46,6 +47,14 @@ th {
     box-shadow: 3px 0px 10px #aaa;
     padding: 30px 20px;
     border-radius: 12px;
+
+    &--hidden {
+        display: none;
+    }
+
+    &--visible {
+        display: flex;
+    }
 
     & input, select {
         margin-bottom: 10px;
@@ -80,4 +89,8 @@ th {
         margin-top: 12px;
     }
 
+}
+
+.form-title {
+    margin-bottom: 12px;
 }
