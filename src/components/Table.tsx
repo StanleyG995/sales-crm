@@ -4,7 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, deleteCompany, isModalOpen, toggleModalVisibility } = context
+	const { companies, deleteCompany } = context
 
 	return (
 		<table style={{ width: "100%" }}>
@@ -32,7 +32,7 @@ const Table = () => {
 						<td>{company.assignedEmployee}</td>
 						<td>{company.createdAt}</td>
 						<td>
-							<button onClick={() => deleteCompany(company.id)}>Delete</button>
+							<button className='button' onClick={() => deleteCompany(company.id)}>Delete</button>
 						</td>
 					</tr>
 				))}

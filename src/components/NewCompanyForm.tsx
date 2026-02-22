@@ -38,113 +38,125 @@ const NewCompanyForm = () => {
 	}
 
 	useEffect(() => {
-		console.log(name, industry, email, phoneNumber, total, employee, isModalOpen)
+		console.log(
+			name,
+			industry,
+			email,
+			phoneNumber,
+			total,
+			employee,
+			isModalOpen
+		)
 	}, [name, industry, email, phoneNumber, total, employee, isModalOpen])
 
 	return (
-		<form className= {isModalOpen ? 'company form company-form--visible' : 'company form company-form--hidden'}>
-			<h2 className='form-title'>Add new company</h2>
-			<label htmlFor='company-name'>Name:</label>
-			<input
-				id='company-name'
-				placeholder='Company name'
-				onChange={handleNameChange}
-				value={name}></input>
+		<div className={ isModalOpen ? 'overlay overlay--visible' : 'overlay overlay--hidden'}>
+			<form
+				className='company-form'>
+				<h2 className='form-title'>Add new company</h2>
+				<label htmlFor='company-name'>Name:</label>
+				<input
+					id='company-name'
+					placeholder='Company name'
+					onChange={handleNameChange}
+					value={name}></input>
 
-			<label htmlFor='company-industry'>Industry:</label>
-			<select
-				id='company-industry'
-				onChange={handleIndustryChange}
-				value={industry}>
-				<option value='' disabled selected hidden>
-					Company's industry
-				</option>
-				<option>Healthcare</option>
-				<option>IT</option>
-				<option>Logistics</option>
-				<option>Education</option>
-				<option>Finance</option>
-				<option>Marketing</option>
-				<option>Real Estate</option>
-				<option>E-commerce</option>
-				<option>Construction</option>
-			</select>
+				<label htmlFor='company-industry'>Industry:</label>
+				<select
+					id='company-industry'
+					onChange={handleIndustryChange}
+					value={industry}>
+					<option value='' disabled selected hidden>
+						Company's industry
+					</option>
+					<option>Healthcare</option>
+					<option>IT</option>
+					<option>Logistics</option>
+					<option>Education</option>
+					<option>Finance</option>
+					<option>Marketing</option>
+					<option>Real Estate</option>
+					<option>E-commerce</option>
+					<option>Construction</option>
+				</select>
 
-			<label htmlFor='company-email'>Email:</label>
-			<input
-				id='company-email'
-				placeholder='Email address'
-				onChange={handleEmailChange}
-				value={email}></input>
+				<label htmlFor='company-email'>Email:</label>
+				<input
+					id='company-email'
+					placeholder='Email address'
+					onChange={handleEmailChange}
+					value={email}></input>
 
-			<label htmlFor='company-phonenumber'>Phone number:</label>
-			<input
-				id='company-phonenumber'
-				placeholder='Phone number'
-				onChange={handlePhoneNumberChange}
-				value={phoneNumber}></input>
+				<label htmlFor='company-phonenumber'>Phone number:</label>
+				<input
+					id='company-phonenumber'
+					placeholder='Phone number'
+					onChange={handlePhoneNumberChange}
+					value={phoneNumber}></input>
 
-			<label htmlFor='company-total'>Total:</label>
-			<input
-				id='company-total'
-				placeholder='Total revenue'
-				onChange={handleTotalChange}
-				value={total}></input>
+				<label htmlFor='company-total'>Total:</label>
+				<input
+					id='company-total'
+					placeholder='Total revenue'
+					onChange={handleTotalChange}
+					value={total}></input>
 
-			<label htmlFor='company-employee'>Employee:</label>
+				<label htmlFor='company-employee'>Employee:</label>
 
-			<select
-				id='company-employee'
-				onChange={handleEmployeeChange}
-				value={employee}>
-				<option value='' disabled selected hidden>
-					Assigned employee
-				</option>
-				<option>Anna Nowak</option>
-				<option>Piotr Kowalski</option>
-				<option>Marta Zielińska</option>
-				<option>Tomasz Wiśniewski</option>
-				<option>Katarzyna Wójcik</option>
-				<option>Michał Lewandowski</option>
-			</select>
+				<select
+					id='company-employee'
+					onChange={handleEmployeeChange}
+					value={employee}>
+					<option value='' disabled selected hidden>
+						Assigned employee
+					</option>
+					<option>Anna Nowak</option>
+					<option>Piotr Kowalski</option>
+					<option>Marta Zielińska</option>
+					<option>Tomasz Wiśniewski</option>
+					<option>Katarzyna Wójcik</option>
+					<option>Michał Lewandowski</option>
+				</select>
 
-			<div className='company-form-controls'>
-				<button
-					onClick={e => {
-						e.preventDefault()
-						if (!name || !industry || !email || !phoneNumber || !employee)
-							return
+				<div className='company-form-controls'>
+					<button
+						className='button'
+						onClick={e => {
+							e.preventDefault()
+							toggleModalVisibility()
+						}}>
+						Cancel
+					</button>
+					<button
+						className='button button--primary'
+						onClick={e => {
+							e.preventDefault()
+							if (!name || !industry || !email || !phoneNumber || !employee)
+								return
 
-						addCompany({
-							id: Date.now(),
-							companyName: name,
-							industry: industry,
-							email: email,
-							phone: phoneNumber,
-							totalSales: total,
-							assignedEmployee: employee,
-							createdAt: new Date().toISOString(),
-						})
+							addCompany({
+								id: Date.now(),
+								companyName: name,
+								industry: industry,
+								email: email,
+								phone: phoneNumber,
+								totalSales: total,
+								assignedEmployee: employee,
+								createdAt: new Date().toISOString(),
+							})
 
-						setName("")
-						setIndustry("")
-						setEmail("")
-						setPhoneNumber("")
-						setTotal(0)
-						setEmployee("")
-					}}>
-					Add company
-				</button>
-
-				<button
-					onClick={e => {
-						e.preventDefault()
-						toggleModalVisibility()
-					}}>
-					Cancel
-				</button>
-			</div>
-		</form>
+							setName("")
+							setIndustry("")
+							setEmail("")
+							setPhoneNumber("")
+							setTotal(0)
+							setEmployee("")
+						}}>
+						Add company
+					</button>
+				</div>
+			</form>
+		</div>
 	)
 }
 
