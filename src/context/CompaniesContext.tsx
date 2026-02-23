@@ -12,18 +12,31 @@ export const CompaniesContext = createContext<CompaniesContextType | null>(null)
 export const CompaniesProvider = ({ children }:Props) => {
     const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
 
-    const [sortByDateDirection, setSortByDateDirection] = useState<'asc' | 'desc'>('asc')
+    const sortComparators: Record<string, (a: CompanyType, b:CompanyType) => number> = {
+      id: (a, b) => a.id - b.id,
+      companyName: (a, b) => a.companyName.localeCompare(b.companyName),
+      createdAt: (a, b) => {
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+      },
+      totalSales: (a, b) => a.totalSales - b.totalSales
+    }
+
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+    const [sortKey, setSortKey] = useState<keyof CompanyType>('createdAt')
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
+
     const sortedCompanies = useMemo(() => {
-      return [...companies].sort((a, b) => {
-        const diff = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-        return sortByDateDirection === 'asc' ? diff : -diff
-      })
-    }, [companies, sortByDateDirection])
+      const comparator = sortComparators[sortKey]
 
-   
+      if (!comparator) return companies
 
-
+      const sorted = [...companies].sort(comparator)
+    
+      return sortDirection === 'asc'
+      ? sorted
+      : sorted.reverse()
+    }, [companies, sortDirection, sortKey])
 
     const deleteCompany = (id:number):void => {
       setCompanies(prev => prev.filter((company) => company.id != id))
@@ -33,24 +46,21 @@ export const CompaniesProvider = ({ children }:Props) => {
       setCompanies(prev => [...prev, company])
     }
 
-    const sortByDate = () => {
-      if (sortByDateDirection === 'asc') {
-        setSortByDateDirection('des')
-      }
-      else {
-        setSortByDateDirection('asc')
-      }
+    const toggleSort = (key: keyof CompanyType) => {
+      setSortKey(key)
+    
+      setSortDirection(prev =>
+        prev === 'asc' ? 'desc' : 'asc'
+      )
     }
 
-    
-    
     const toggleModalVisibility = () => {
       isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true)
     }
 
     
     return (
-        <CompaniesContext.Provider value={{ companies:sortedCompanies, deleteCompany, addCompany, sortByDate, toggleModalVisibility, isModalOpen, sortedCompanies }}>
+        <CompaniesContext.Provider value={{ companies:sortedCompanies, deleteCompany, addCompany, toggleSort, toggleModalVisibility, isModalOpen, sortedCompanies }}>
           {children}
         </CompaniesContext.Provider>
     )

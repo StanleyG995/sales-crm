@@ -7,20 +7,20 @@ import { FaTrashCan } from "react-icons/fa6";
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, deleteCompany, sortByDate, sortedCompanies } = context
+	const { companies, deleteCompany, toggleSort, sortedCompanies } = context
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Name</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('id')}>ID</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('companyName')}>Name</th>
 					<th>Industry</th>
 					<th>Email</th>
 					<th>Phone number</th>
-					<th>Total (PLN)</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('totalSales')}>Total (PLN)</th>
 					<th>Employee</th>
-					<th className = 'table-header--button' onClick = {sortByDate}>Date</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('createdAt')}>Date</th>
 				</tr>
 			</thead>
 			<tbody>
