@@ -7,7 +7,7 @@ import { FaTrashCan } from "react-icons/fa6";
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, deleteCompany } = context
+	const { companies, deleteCompany, sortByDate, sortedCompanies } = context
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
@@ -20,11 +20,11 @@ const Table = () => {
 					<th>Phone number</th>
 					<th>Total (PLN)</th>
 					<th>Employee</th>
-					<th>Date</th>
+					<th className = 'table-header--button' onClick = {sortByDate}>Date</th>
 				</tr>
 			</thead>
 			<tbody>
-				{companies.map(company => (
+				{sortedCompanies.map(company => (
 					<tr key={company.id} className='table-row'>
 						<td>{company.id}</td>
 						<td>{company.companyName}</td>

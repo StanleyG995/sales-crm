@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from 'react'
+import { createContext, useState, useMemo, type ReactNode } from 'react'
 import type { CompaniesContextType } from '../types/CompaniesContextType'
 import type { CompanyType } from '../types/CompanyType'
 import { companiesData } from '../data/companies'
@@ -11,9 +11,19 @@ export const CompaniesContext = createContext<CompaniesContextType | null>(null)
 
 export const CompaniesProvider = ({ children }:Props) => {
     const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
-    const [sortByDateDirection, setSortByDateDirection] = useState<string>('ascending')
 
+    const [sortByDateDirection, setSortByDateDirection] = useState<'asc' | 'desc'>('asc')
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+    const sortedCompanies = useMemo(() => {
+      return [...companies].sort((a, b) => {
+        const diff = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        return sortByDateDirection === 'asc' ? diff : -diff
+      })
+    }, [companies, sortByDateDirection])
+
+   
+
+
 
     const deleteCompany = (id:number):void => {
       setCompanies(prev => prev.filter((company) => company.id != id))
@@ -24,15 +34,15 @@ export const CompaniesProvider = ({ children }:Props) => {
     }
 
     const sortByDate = () => {
-      if(sortByDateDirection === 'ascending'){
-        setCompanies(prev => [...prev].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
-        setSortByDateDirection('descending')
-      } 
+      if (sortByDateDirection === 'asc') {
+        setSortByDateDirection('des')
+      }
       else {
-        setCompanies(prev => [...prev].sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
-        setSortByDateDirection('ascending')
+        setSortByDateDirection('asc')
       }
     }
+
+    
     
     const toggleModalVisibility = () => {
       isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true)
@@ -40,7 +50,7 @@ export const CompaniesProvider = ({ children }:Props) => {
 
     
     return (
-        <CompaniesContext.Provider value={{ companies, deleteCompany, addCompany, sortByDate, toggleModalVisibility, isModalOpen }}>
+        <CompaniesContext.Provider value={{ companies:sortedCompanies, deleteCompany, addCompany, sortByDate, toggleModalVisibility, isModalOpen, sortedCompanies }}>
           {children}
         </CompaniesContext.Provider>
     )
