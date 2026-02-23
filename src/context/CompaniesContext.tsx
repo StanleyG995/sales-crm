@@ -54,13 +54,19 @@ export const CompaniesProvider = ({ children }:Props) => {
       )
     }
 
+    const renderSortArrow = (key: keyof CompanyType) => {
+      if (sortKey !== key) return null
+    
+      return sortDirection === 'asc' ? ' ▲' : ' ▼'
+    }
+
     const toggleModalVisibility = () => {
       isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true)
     }
 
     
     return (
-        <CompaniesContext.Provider value={{ companies:sortedCompanies, deleteCompany, addCompany, toggleSort, toggleModalVisibility, isModalOpen, sortedCompanies }}>
+        <CompaniesContext.Provider value={{ companies:sortedCompanies, deleteCompany, addCompany, toggleSort, toggleModalVisibility, isModalOpen, sortedCompanies, renderSortArrow }}>
           {children}
         </CompaniesContext.Provider>
     )

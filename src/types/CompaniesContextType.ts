@@ -9,4 +9,5 @@ export interface CompaniesContextType {
   deleteCompany: (id: number) => void;
   addCompany: (company: CompanyType) => void,
   toggleSort: (key: keyof CompanyType) => void,
+  renderSortArrow: (key: keyof CompanyType) => string | null;
 };

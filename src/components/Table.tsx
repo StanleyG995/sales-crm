@@ -7,20 +7,20 @@ import { FaTrashCan } from "react-icons/fa6";
 const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { companies, deleteCompany, toggleSort, sortedCompanies } = context
+	const { companies, deleteCompany, toggleSort, sortedCompanies, renderSortArrow } = context
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
 			<thead>
 				<tr>
-					<th className = 'table-header--button' onClick = {() => toggleSort('id')}>ID</th>
-					<th className = 'table-header--button' onClick = {() => toggleSort('companyName')}>Name</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('id')}>ID { renderSortArrow('id') }</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('companyName')}>Name { renderSortArrow('companyName') }</th>
 					<th>Industry</th>
 					<th>Email</th>
 					<th>Phone number</th>
-					<th className = 'table-header--button' onClick = {() => toggleSort('totalSales')}>Total (PLN)</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('totalSales')}>Total (PLN) { renderSortArrow('totalSales') }</th>
 					<th>Employee</th>
-					<th className = 'table-header--button' onClick = {() => toggleSort('createdAt')}>Date</th>
+					<th className = 'table-header--button' onClick = {() => toggleSort('createdAt')}>Date { renderSortArrow('createdAt') }</th>
 				</tr>
 			</thead>
 			<tbody>
