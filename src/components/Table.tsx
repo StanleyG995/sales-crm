@@ -7,7 +7,6 @@ const Table = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
 	const {
-		companies,
 		deleteCompany,
 		toggleSort,
 		sortedCompanies,
