@@ -1,22 +1,23 @@
 import { useContext } from "react"
 import { CompaniesContext } from "../context/CompaniesContext"
 
-import { FaSquarePlus } from "react-icons/fa6";
-
+import { FaSquarePlus } from "react-icons/fa6"
 
 const Header = () => {
-
-    const context = useContext(CompaniesContext)
+	const context = useContext(CompaniesContext)
 	if (!context) return null
 	const { toggleModalVisibility } = context
 
-    return (
-        <header className = 'app-header'>
-            <button className='button button--primary' onClick = {toggleModalVisibility}>
-                <FaSquarePlus className='button-icon'/>Add company
-            </button>
-        </header>
-    )
+	return (
+		<header className='app-header'>
+			<button
+				className='button button--primary'
+				onClick={toggleModalVisibility}>
+				<FaSquarePlus className='button-icon' />
+				Add company
+			</button>
+		</header>
+	)
 }
 
 export default Header

@@ -50,9 +50,11 @@ const NewCompanyForm = () => {
 	}, [name, industry, email, phoneNumber, total, employee, isModalOpen])
 
 	return (
-		<div className={ isModalOpen ? 'overlay overlay--visible' : 'overlay overlay--hidden'}>
-			<form
-				className='company-form'>
+		<div
+			className={
+				isModalOpen ? "overlay overlay--visible" : "overlay overlay--hidden"
+			}>
+			<form className='company-form'>
 				<h2 className='form-title'>Add new company</h2>
 				<label htmlFor='company-name'>Name:</label>
 				<input
