@@ -91,6 +91,8 @@ html {
     max-height:100vh;
     display: flex;
 
+    
+
     &-main {
         padding: 30px;
         flex: 1;
@@ -109,8 +111,18 @@ html {
         padding: 30px;
         background: #fafafa;
         border-right: solid 1px #bbb;
-        min-width: 200px;
-        max-width: 250px;
+        min-width: 250px;
+        max-width: 300px;
+        
+        &-title {
+            margin-bottom: 20px;
+        }
+
+        &-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 }
 

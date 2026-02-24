@@ -1,7 +1,6 @@
 import Main from "./Main"
 import Sidebar from './Sidebar'
-import { useContext } from "react"
-import { CompaniesContext } from "../context/CompaniesContext"
+
 
 function AppWrapper() {
 
