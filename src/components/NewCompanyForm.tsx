@@ -4,7 +4,7 @@ import { CompaniesContext } from "../context/CompaniesContext"
 const NewCompanyForm = () => {
 	const context = useContext(CompaniesContext)
 	if (!context) return null
-	const { addCompany, toggleModalVisibility, isModalOpen } = context
+	const { addCompany } = context
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
@@ -45,16 +45,11 @@ const NewCompanyForm = () => {
 			phoneNumber,
 			total,
 			employee,
-			isModalOpen
 		)
-	}, [name, industry, email, phoneNumber, total, employee, isModalOpen])
+	}, [name, industry, email, phoneNumber, total, employee, ])
 
 	return (
-		<div
-			className={
-				isModalOpen ? "overlay overlay--visible" : "overlay overlay--hidden"
-			}>
-			<form className='company-form'>
+		<form className='company-form'>
 				<h2 className='form-title'>Add new company</h2>
 				<label htmlFor='company-name'>Name:</label>
 				<input
@@ -125,7 +120,7 @@ const NewCompanyForm = () => {
 						className='button'
 						onClick={e => {
 							e.preventDefault()
-							toggleModalVisibility()
+							// toggleModalVisibility()
 						}}>
 						Cancel
 					</button>
@@ -158,7 +153,6 @@ const NewCompanyForm = () => {
 					</button>
 				</div>
 			</form>
-		</div>
 	)
 }
 
