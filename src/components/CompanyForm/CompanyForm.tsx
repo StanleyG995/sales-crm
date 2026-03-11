@@ -119,7 +119,6 @@ const NewCompanyForm = () => {
 						className='button'
 						onClick={e => {
 							e.preventDefault()
-							// toggleModalVisibility()
 						}}>
 						Cancel
 					</button>
