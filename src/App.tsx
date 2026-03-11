@@ -1,12 +1,9 @@
-import { CompaniesProvider } from "./context/CompaniesContext"
-import AppWrapper from "./components/AppWrapper"
+import AppWrapper from "./AppWrapper"
 
 function App() {
 	return (
 		<>
-			<CompaniesProvider>
-				<AppWrapper />
-			</CompaniesProvider>
+			<AppWrapper />
 		</>
 	)
 }

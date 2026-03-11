@@ -1,4 +1,4 @@
-import type { CompanyType } from "../types/CompanyType"
+import type { CompanyType } from "../features/companies/CompanyType"
 
 export const companiesData: CompanyType[] = [
 	{

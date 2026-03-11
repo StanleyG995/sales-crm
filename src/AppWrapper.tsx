@@ -1,15 +1,10 @@
 import Main from "./Main"
-import Sidebar from './Sidebar'
-
+import Sidebar from "./components/Sidebar"
 
 function AppWrapper() {
-
 	return (
 		<>
-			<div
-				className={
-					"app"
-				}>
+			<div className={"app"}>
 				<Sidebar />
 				<Main />
 			</div>

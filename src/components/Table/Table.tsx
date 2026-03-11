@@ -1,17 +1,11 @@
-import { useContext } from "react"
-import { CompaniesContext } from "../context/CompaniesContext"
+import { useCompanies } from '../../features/companies/useCompanies'
 
 import { FaTrashCan } from "react-icons/fa6"
 
 const Table = () => {
-	const context = useContext(CompaniesContext)
-	if (!context) return null
-	const {
-		deleteCompany,
-		toggleSort,
-		sortedCompanies,
-		renderSortArrow,
-	} = context
+	
+	const { deleteCompany, renderSortArrow, toggleSort, companies:sortedCompanies } = useCompanies()
+
 
 	return (
 		<table className='table' style={{ width: "100%" }}>

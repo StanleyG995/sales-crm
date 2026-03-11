@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext } from "react"
-import { CompaniesContext } from "../context/CompaniesContext"
+import { useState, useEffect } from "react"
+import { useCompanies } from "../../features/companies/useCompanies"
 
 const NewCompanyForm = () => {
-	const context = useContext(CompaniesContext)
-	if (!context) return null
-	const { addCompany } = context
+	
+	const { addCompany } = useCompanies()
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
