@@ -1,11 +1,7 @@
-import { useCompanies } from '../../features/companies/useCompanies'
-
+import type { TableProps } from "./Table.types"
 import { FaTrashCan } from "react-icons/fa6"
 
-const Table = () => {
-	
-	const { deleteCompany, renderSortArrow, toggleSort, companies:sortedCompanies } = useCompanies()
-
+const Table = ({ companies, deleteCompany, toggleSort, renderSortArrow }: TableProps) => {
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
@@ -36,7 +32,7 @@ const Table = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{sortedCompanies.map(company => (
+				{companies.map(company => (
 					<tr key={company.id} className='table-row'>
 						<td>{company.id}</td>
 						<td>{company.companyName}</td>

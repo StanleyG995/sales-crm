@@ -1,4 +1,4 @@
-import Main from "./Main"
+import CompaniesPage from "./pages/CompaniesPage"
 import Sidebar from "./components/Sidebar"
 
 function AppWrapper() {
@@ -6,7 +6,7 @@ function AppWrapper() {
 		<>
 			<div className={"app"}>
 				<Sidebar />
-				<Main />
+				<CompaniesPage />
 			</div>
 		</>
 	)
