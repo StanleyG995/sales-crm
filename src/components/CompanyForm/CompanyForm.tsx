@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
-import { useCompanies } from "../../features/companies/useCompanies"
+import type { CompanyFormProps } from "../CompanyForm/CompanyForm.types"
 
-const NewCompanyForm = () => {
-	
-	const { addCompany } = useCompanies()
+const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
@@ -119,6 +117,7 @@ const NewCompanyForm = () => {
 						className='button'
 						onClick={e => {
 							e.preventDefault()
+							onSuccess()
 						}}>
 						Cancel
 					</button>
@@ -146,6 +145,8 @@ const NewCompanyForm = () => {
 							setPhoneNumber("")
 							setTotal(0)
 							setEmployee("")
+
+							onSuccess()
 						}}>
 						Add company
 					</button>
