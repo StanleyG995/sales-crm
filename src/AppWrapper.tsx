@@ -1,15 +1,23 @@
-import CompaniesPage from "./pages/CompaniesPage"
-import Sidebar from "./components/Sidebar"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import CompaniesPage from "./pages/CompaniesPage";
+import OrdersPage from "./pages/OrdersPage";
+import Sidebar from "./components/Sidebar";
 
 function AppWrapper() {
 	return (
-		<>
-			<div className={"app"}>
+		<BrowserRouter>
+			<div className="app">
 				<Sidebar />
-				<CompaniesPage />
+
+				<Routes>
+					<Route path="/companies" element={<CompaniesPage />} />
+					<Route path="/orders" element={<OrdersPage />} />
+				</Routes>
+
 			</div>
-		</>
-	)
+		</BrowserRouter>
+	);
 }
 
-export default AppWrapper
+export default AppWrapper;
