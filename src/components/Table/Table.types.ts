@@ -1,8 +1,8 @@
-import type { CompanyType } from "../../features/companies/Company.type"
+import type { CompanyProps } from "../../features/companies/Company.type"
 
 export interface TableProps {
-	companies: CompanyType[]
-	deleteCompany: (id: number) => void
-	toggleSort: (key: keyof CompanyType) => void
-	renderSortArrow: (key: keyof CompanyType) => React.ReactNode
-}
+	companies: CompanyProps[];
+	onDeleteClick: (company: CompanyProps) => void;
+	toggleSort: (key: keyof CompanyProps) => void;
+	renderSortArrow: (key: keyof CompanyProps) => React.ReactNode;
+  }

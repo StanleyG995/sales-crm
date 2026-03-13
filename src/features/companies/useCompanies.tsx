@@ -1,15 +1,15 @@
 import { useState, useMemo } from "react"
-import type { CompanyType } from "./Company.type"
+import type { CompanyProps } from "./Company.type"
 import { companiesData } from "../../data/companies"
 
 export const useCompanies = () => {
-	const [companies, setCompanies] = useState<CompanyType[]>(companiesData)
-	const [sortKey, setSortKey] = useState<keyof CompanyType>("createdAt")
+	const [companies, setCompanies] = useState<CompanyProps[]>(companiesData)
+	const [sortKey, setSortKey] = useState<keyof CompanyProps>("createdAt")
 	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
 
 	const sortComparators: Record<
 		string,
-		(a: CompanyType, b: CompanyType) => number
+		(a: CompanyProps, b: CompanyProps) => number
 	> = {
 		id: (a, b) => a.id - b.id,
 		companyName: (a, b) => a.companyName.localeCompare(b.companyName),
@@ -25,15 +25,20 @@ export const useCompanies = () => {
 		return sortDirection === "asc" ? sorted : sorted.reverse()
 	}, [companies, sortDirection, sortKey])
 
-	const addCompany = (company: CompanyType) =>
+	const addCompany = (company: CompanyProps) => {
 		setCompanies(prev => [...prev, company])
-	const deleteCompany = (id: number) =>
-		setCompanies(prev => prev.filter(c => c.id !== id))
-	const toggleSort = (key: keyof CompanyType) => {
+	}
+
+	const deleteCompany = (company: CompanyProps) => {
+		setCompanies(prev => prev.filter(c => c.id !== company.id))
+	}
+
+	const toggleSort = (key: keyof CompanyProps) => {
 		setSortKey(key)
 		setSortDirection(prev => (prev === "asc" ? "desc" : "asc"))
 	}
-	const renderSortArrow = (key: keyof CompanyType) =>
+
+	const renderSortArrow = (key: keyof CompanyProps) =>
 		sortKey === key ? (sortDirection === "asc" ? " ▲" : " ▼") : null
 
 	return {

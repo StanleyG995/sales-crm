@@ -1,7 +1,7 @@
 import type { TableProps } from "./Table.types"
 import { FaTrashCan } from "react-icons/fa6"
 
-const Table = ({ companies, deleteCompany, toggleSort, renderSortArrow }: TableProps) => {
+const Table = ({ companies, onDeleteClick, toggleSort, renderSortArrow }: TableProps) => {
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
@@ -45,7 +45,7 @@ const Table = ({ companies, deleteCompany, toggleSort, renderSortArrow }: TableP
 						<td>
 							<button
 								className='button button--danger'
-								onClick={() => deleteCompany(company.id)}>
+								onClick={() => onDeleteClick(company)}>
 								<FaTrashCan className='button-icon' />
 								Delete
 							</button>

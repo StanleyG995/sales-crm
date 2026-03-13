@@ -1,4 +1,4 @@
-export interface CompanyType {
+export interface CompanyProps {
     id: number;
     companyName: string;
     industry: string;

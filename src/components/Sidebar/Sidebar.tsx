@@ -9,7 +9,7 @@ const Sidebar = () => {
 				<ul className='sidebar-menu'>
 					<li className='sidebar-menu-item'>
 						<NavLink
-							to='/Dashboard'
+							to='/'
 							className={({ isActive }) =>
 								isActive ? "sidebar-menu-link sidebar-menu-link--active" : "sidebar-menu-link"
 							}>

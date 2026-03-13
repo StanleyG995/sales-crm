@@ -13,10 +13,10 @@ function AppWrapper() {
 				<Sidebar />
 
 				<Routes>
+					<Route path="/" element={<DashboardPage />} />
 					<Route path="/companies" element={<CompaniesPage />} />
 					<Route path="/orders" element={<OrdersPage />} />
 					<Route path="/employees" element={<EmployeesPage />} />
-					<Route path="/dashboard" element={<DashboardPage />} />
 				</Routes>
 
 			</div>
