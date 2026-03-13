@@ -75,10 +75,15 @@ html {
     }
 
     &--danger {
-        border: 1px solid #de0707;
-        background: none;
-        color: #de0707;
+        background:  #de0707;
+        color: white;
         border: none;
+
+        &--text {
+            background: none;
+            color: #de0707;
+            border: none;
+        }
     }
 
     &-icon {

@@ -1,7 +1,7 @@
-import type { CompanyType } from '../../features/companies/Company.type'
+import type { CompanyProps } from '../../features/companies/Company.type'
 
 export interface CompanyFormProps {
-    addCompany: (company: CompanyType) => void,
+    addCompany: (company: CompanyProps) => void,
     onSuccess: () => void
   };
   

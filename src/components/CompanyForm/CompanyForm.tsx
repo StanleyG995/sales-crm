@@ -112,7 +112,7 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 					<option>Michał Lewandowski</option>
 				</select>
 
-				<div className='company-form-controls'>
+				<div className='modal-controls'>
 					<button
 						className='button'
 						onClick={e => {

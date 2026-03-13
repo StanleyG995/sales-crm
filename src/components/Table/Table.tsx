@@ -44,7 +44,7 @@ const Table = ({ companies, onDeleteClick, toggleSort, renderSortArrow }: TableP
 						<td>{company.createdAt}</td>
 						<td>
 							<button
-								className='button button--danger'
+								className='button button--danger--text'
 								onClick={() => onDeleteClick(company)}>
 								<FaTrashCan className='button-icon' />
 								Delete
