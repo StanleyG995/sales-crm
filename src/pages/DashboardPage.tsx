@@ -1,9 +1,9 @@
-const EmployeesPage = () => {
-    return (
-        <>
-            <h1>Dashboard</h1>
-        </>
-    )
+const DashboardPage = () => {
+	return (
+		<section className={"app-main"}>
+			<h2>Dashboard</h2>
+		</section>
+	)
 }
 
-export default EmployeesPage
+export default DashboardPage

@@ -1,8 +1,8 @@
 const OrdersPage = () => {
     return (
-        <>
-            <h1>Orders</h1>
-        </>
+        <section className={"app-main"}>
+			<h2>Orders</h2>
+		</section>
     )
 }
 

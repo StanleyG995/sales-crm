@@ -1,8 +1,8 @@
 const EmployeesPage = () => {
     return (
-        <>
-            <h1>Employees</h1>
-        </>
+        <section className={"app-main"}>
+			<h2>Employees</h2>
+		</section>
     )
 }
 

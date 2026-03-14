@@ -34,7 +34,7 @@ const Table = ({ companies, onDeleteClick, onEditClick, toggleSort, renderSortAr
 				</tr>
 			</thead>
 			<tbody>
-				{companies.map(company => (
+				{companies.slice(0,10).map(company => (
 					<tr key={company.id} className='table-row'>
 						<td>{company.id}</td>
 						<td>{company.companyName}</td>
