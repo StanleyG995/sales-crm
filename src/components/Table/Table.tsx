@@ -32,7 +32,7 @@ const Table = ({
         pages.push(
           <li key={i}>
             <button
-              className={i === page ? "active" : ""}
+              className={i === page ? "active button" : "button"}
               onClick={() => handlePageClick(i)}
               aria-current={i === page ? "page" : undefined}
             >
@@ -107,13 +107,13 @@ const Table = ({
       </table>
 
       <nav aria-label="table pagination" className="table-pagination">
-        <button onClick={() => handlePageClick(page - 1)} disabled={page === 0}>
+        <button className='button' onClick={() => handlePageClick(page - 1)} disabled={page === 0}>
           <FaArrowLeft />
         </button>
 
         <ul className="table-pagination-numbers">{renderPageNumbers()}</ul>
 
-        <button onClick={() => handlePageClick(page + 1)} disabled={page === totalPages - 1}>
+        <button className='button' onClick={() => handlePageClick(page + 1)} disabled={page === totalPages - 1}>
           <FaArrowRight />
         </button>
       </nav>
