@@ -1,88 +1,124 @@
-import { useState, useEffect } from "react"
-
-import type { TableProps } from "./Table.types"
-import { FaTrashCan, FaPencil, FaArrowLeft, FaArrowRight} from "react-icons/fa6"
-
-import { formatDate } from "../../utils/helpers/formatDate"
+import { useState, useEffect } from "react";
+import type { TableProps } from "./Table.types";
+import { FaTrashCan, FaPencil, FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { formatDate } from "../../utils/helpers/formatDate";
 
 const Table = ({
-	companies,
-	onDeleteClick,
-	onEditClick,
-	toggleSort,
-	renderSortArrow,
+  companies,
+  onDeleteClick,
+  onEditClick,
+  toggleSort,
+  renderSortArrow,
 }: TableProps) => {
-	const [page, setPage] = useState<number>(0)
+  const [page, setPage] = useState<number>(0);
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(companies.length / rowsPerPage);
 
-	useEffect(() => console.log(page),
-[page])
+  useEffect(() => console.log(page), [page]);
 
-	return (
-		<>
-			<table className='table' style={{ width: "100%" }}>
-				<thead>
-					<tr>
-						<th
-							className='table-header--button'
-							onClick={() => toggleSort("id")}>
-							ID {renderSortArrow("id")}
-						</th>
-						<th
-							className='table-header--button'
-							onClick={() => toggleSort("companyName")}>
-							Name {renderSortArrow("companyName")}
-						</th>
-						<th>Industry</th>
-						<th>Email</th>
-						<th>Phone number</th>
-						<th
-							className='table-header--button'
-							onClick={() => toggleSort("totalSales")}>
-							Total (PLN) {renderSortArrow("totalSales")}
-						</th>
-						<th>Employee</th>
-						<th
-							className='table-header--button'
-							onClick={() => toggleSort("createdAt")}>
-							Date {renderSortArrow("createdAt")}
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{companies.slice(page*10, page*10 + 10).map(company => (
-						<tr key={company.id} className='table-row'>
-							<td title={company.id.toString()}>{company.id}</td>
-							<td title={company.companyName.toString()}>{company.companyName}</td>
-							<td title={company.industry.toString()}>{company.industry}</td>
-							<td title={company.email.toString()}>{company.email}</td>
-							<td title={company.phone.toString()}>{company.phone}</td>
-							<td title={company.totalSales.toString()}>{company.totalSales.toLocaleString("pl-PL")}</td>
-							<td title={company.assignedEmployee.toString()}>{company.assignedEmployee}</td>
-							<td title={company.createdAt.toString()}>{formatDate(company.createdAt)}</td>
-							<td>
-								<button className='button' onClick={() => onEditClick(company)}>
-									<FaPencil className='button-icon' />
-									Edit
-								</button>
-							</td>
-							<td>
-								<button
-									className='button button--danger--text'
-									onClick={() => onDeleteClick(company)}>
-									<FaTrashCan className='button-icon' />
-									Delete
-								</button>
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-			<nav aria-label='table pagination' className='table-pagination'>
-				<button className='button' onClick = {() => {if(page > 0) {setPage(prev => prev-1)}}}><FaArrowLeft/></button>
-				<button className='button' onClick = {() => {if(page < (companies.length/10)-1) {setPage(prev => prev+1)}}}><FaArrowRight/></button>
-			</nav>
-		</>
-	)
-}
+  const handlePageClick = (newPage: number) => {
+    if (newPage >= 0 && newPage < totalPages) setPage(newPage);
+  };
 
-export default Table
+  const renderPageNumbers = () => {
+    const pages = [];
+
+    for (let i = 0; i < totalPages; i++) {
+      if (
+        i === 0 || // pierwsza strona
+        i === totalPages - 1 || // ostatnia strona
+        (i >= page - 1 && i <= page + 1) // bieżąca strona +/-1
+      ) {
+        pages.push(
+          <li key={i}>
+            <button
+              className={i === page ? "active" : ""}
+              onClick={() => handlePageClick(i)}
+              aria-current={i === page ? "page" : undefined}
+            >
+              {i + 1}
+            </button>
+          </li>
+        );
+      } else if (
+        (i === page - 2 && page > 2) ||
+        (i === page + 2 && page < totalPages - 3)
+      ) {
+        pages.push(<li key={i}>...</li>);
+      }
+    }
+
+    return pages;
+  };
+
+  return (
+    <>
+      <table className="table" style={{ width: "100%" }}>
+        <thead>
+          <tr>
+            <th className="table-header--button" onClick={() => toggleSort("id")}>
+              ID {renderSortArrow("id")}
+            </th>
+            <th className="table-header--button" onClick={() => toggleSort("companyName")}>
+              Name {renderSortArrow("companyName")}
+            </th>
+            <th>Industry</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th className="table-header--button" onClick={() => toggleSort("totalSales")}>
+              Total (PLN) {renderSortArrow("totalSales")}
+            </th>
+            <th>Employee</th>
+            <th className="table-header--button" onClick={() => toggleSort("createdAt")}>
+              Date {renderSortArrow("createdAt")}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {companies
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((company) => (
+              <tr key={company.id} className="table-row">
+                <td title={company.id.toString()}>{company.id}</td>
+                <td title={company.companyName}>{company.companyName}</td>
+                <td title={company.industry}>{company.industry}</td>
+                <td title={company.email}>{company.email}</td>
+                <td title={company.phone}>{company.phone}</td>
+                <td title={company.totalSales.toString()}>
+                  {company.totalSales.toLocaleString("pl-PL")}
+                </td>
+                <td title={company.assignedEmployee}>{company.assignedEmployee}</td>
+                <td title={company.createdAt.toString()}>{formatDate(company.createdAt)}</td>
+                <td>
+                  <button className="button" onClick={() => onEditClick(company)}>
+                    <FaPencil className="button-icon" />
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button className="button button--danger--text" onClick={() => onDeleteClick(company)}>
+                    <FaTrashCan className="button-icon" />
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+
+      <nav aria-label="table pagination" className="table-pagination">
+        <button onClick={() => handlePageClick(page - 1)} disabled={page === 0}>
+          <FaArrowLeft />
+        </button>
+
+        <ul className="table-pagination-numbers">{renderPageNumbers()}</ul>
+
+        <button onClick={() => handlePageClick(page + 1)} disabled={page === totalPages - 1}>
+          <FaArrowRight />
+        </button>
+      </nav>
+    </>
+  );
+};
+
+export default Table;

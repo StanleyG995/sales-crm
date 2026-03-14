@@ -184,7 +184,16 @@ html {
     &-pagination {
         display: flex;
         gap: 12px;
-        margin-top: 12px;
+        margin: 0 auto;
+        margin-top: 20px;
+        max-width: 400px;
+
+        &-numbers {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            gap: 20px;
+        }
     }
 }
 
