@@ -1,7 +1,7 @@
 import type { TableProps } from "./Table.types"
-import { FaTrashCan } from "react-icons/fa6"
+import { FaTrashCan, FaPencil } from "react-icons/fa6"
 
-const Table = ({ companies, onDeleteClick, toggleSort, renderSortArrow }: TableProps) => {
+const Table = ({ companies, onDeleteClick, onEditClick, toggleSort, renderSortArrow }: TableProps) => {
 
 	return (
 		<table className='table' style={{ width: "100%" }}>
@@ -43,6 +43,14 @@ const Table = ({ companies, onDeleteClick, toggleSort, renderSortArrow }: TableP
 						<td>{company.assignedEmployee}</td>
 						<td>{company.createdAt}</td>
 						<td>
+						<button
+								className='button'
+								onClick={() => onEditClick(company)}>
+								<FaPencil className='button-icon' />
+								Edit
+							</button>
+						</td>
+						<td>
 							<button
 								className='button button--danger--text'
 								onClick={() => onDeleteClick(company)}>
@@ -50,6 +58,7 @@ const Table = ({ companies, onDeleteClick, toggleSort, renderSortArrow }: TableP
 								Delete
 							</button>
 						</td>
+						
 					</tr>
 				))}
 			</tbody>

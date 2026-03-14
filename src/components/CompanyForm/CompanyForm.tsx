@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import type { CompanyFormProps } from "../CompanyForm/CompanyForm.types"
 
-const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
+const CompanyForm = ( { addCompany, onSuccess, editedCompany } : CompanyFormProps ) => {
 
 	const [name, setName] = useState<string>("")
 	const [industry, setIndustry] = useState<string>("")
@@ -35,15 +35,15 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 	}
 
 	useEffect(() => {
-		console.log(
-			name,
-			industry,
-			email,
-			phoneNumber,
-			total,
-			employee,
-		)
-	}, [name, industry, email, phoneNumber, total, employee, ])
+		if (editedCompany) {
+			setName(editedCompany.companyName)
+			setIndustry(editedCompany.industry)
+			setEmail(editedCompany.email)
+			setPhoneNumber(editedCompany.phone)
+			setTotal(Number(editedCompany.totalSales))
+			setEmployee(editedCompany.assignedEmployee)
+		}
+	}, [editedCompany])
 
 	return (
 		<form className='company-form'>
@@ -60,7 +60,7 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 					id='company-industry'
 					onChange={handleIndustryChange}
 					value={industry}>
-					<option value='' disabled selected hidden>
+					<option value='' disabled hidden>
 						Company's industry
 					</option>
 					<option>Healthcare</option>
@@ -101,7 +101,7 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 					id='company-employee'
 					onChange={handleEmployeeChange}
 					value={employee}>
-					<option value='' disabled selected hidden>
+					<option value='' disabled hidden>
 						Assigned employee
 					</option>
 					<option>Anna Nowak</option>
@@ -118,6 +118,14 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 						onClick={e => {
 							e.preventDefault()
 							onSuccess()
+
+							setName("")
+							setIndustry("")
+							setEmail("")
+							setPhoneNumber("")
+							setTotal(0)
+							setEmployee("")
+
 						}}>
 						Cancel
 					</button>
@@ -139,14 +147,14 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 								createdAt: new Date().toISOString(),
 							})
 
+							onSuccess()
+
 							setName("")
 							setIndustry("")
 							setEmail("")
 							setPhoneNumber("")
 							setTotal(0)
 							setEmployee("")
-
-							onSuccess()
 						}}>
 						Add company
 					</button>
@@ -155,4 +163,4 @@ const NewCompanyForm = ( { addCompany, onSuccess } : CompanyFormProps ) => {
 	)
 }
 
-export default NewCompanyForm
+export default CompanyForm
