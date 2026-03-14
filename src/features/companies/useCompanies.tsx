@@ -5,7 +5,7 @@ import { companiesData } from "../../data/companies"
 export const useCompanies = () => {
 	const [companies, setCompanies] = useState<CompanyProps[]>(companiesData)
 	const [sortKey, setSortKey] = useState<keyof CompanyProps>("createdAt")
-	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc")
 
 	const sortComparators: Record<
 		string,
@@ -29,6 +29,12 @@ export const useCompanies = () => {
 		setCompanies(prev => [...prev, company])
 	}
 
+	const editCompany = (company: CompanyProps) => {
+		setCompanies(prev =>
+			prev.map(c => (c.id === company.id ? company : c))
+		  )
+	}
+
 	const deleteCompany = (company: CompanyProps) => {
 		setCompanies(prev => prev.filter(c => c.id !== company.id))
 	}
@@ -44,6 +50,7 @@ export const useCompanies = () => {
 	return {
 		companies: sortedCompanies,
 		addCompany,
+		editCompany,
 		deleteCompany,
 		toggleSort,
 		renderSortArrow,

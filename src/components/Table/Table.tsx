@@ -1,6 +1,8 @@
 import type { TableProps } from "./Table.types"
 import { FaTrashCan, FaPencil } from "react-icons/fa6"
 
+import { formatDate } from '../../utils/helpers/formatDate'
+
 const Table = ({ companies, onDeleteClick, onEditClick, toggleSort, renderSortArrow }: TableProps) => {
 
 	return (
@@ -41,7 +43,7 @@ const Table = ({ companies, onDeleteClick, onEditClick, toggleSort, renderSortAr
 						<td>{company.phone}</td>
 						<td>{company.totalSales.toLocaleString("pl-PL")}</td>
 						<td>{company.assignedEmployee}</td>
-						<td>{company.createdAt}</td>
+						<td>{formatDate(company.createdAt)}</td>
 						<td>
 						<button
 								className='button'

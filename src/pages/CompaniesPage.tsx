@@ -29,7 +29,10 @@ const CompaniesPage = () => {
               toggle()
               setCompanyToEdit(null)
             }}>
-				<CompanyForm addCompany = {companiesHook.addCompany} onSuccess = {toggle} editedCompany = {companyToEdit} />
+				<CompanyForm addCompany = {companiesHook.addCompany} editCompany = {companiesHook.editCompany} onSuccess = {() => {
+          toggle()
+          setCompanyToEdit(null)
+        }} editedCompany = {companyToEdit} />
 			</Modal>
 
             {companyToDelete && (
