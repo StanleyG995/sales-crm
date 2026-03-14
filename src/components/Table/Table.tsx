@@ -51,14 +51,14 @@ const Table = ({
 				<tbody>
 					{companies.slice(page*10, page*10 + 10).map(company => (
 						<tr key={company.id} className='table-row'>
-							<td>{company.id}</td>
-							<td>{company.companyName}</td>
-							<td>{company.industry}</td>
-							<td>{company.email}</td>
-							<td>{company.phone}</td>
-							<td>{company.totalSales.toLocaleString("pl-PL")}</td>
-							<td>{company.assignedEmployee}</td>
-							<td>{formatDate(company.createdAt)}</td>
+							<td title={company.id.toString()}>{company.id}</td>
+							<td title={company.companyName.toString()}>{company.companyName}</td>
+							<td title={company.industry.toString()}>{company.industry}</td>
+							<td title={company.email.toString()}>{company.email}</td>
+							<td title={company.phone.toString()}>{company.phone}</td>
+							<td title={company.totalSales.toString()}>{company.totalSales.toLocaleString("pl-PL")}</td>
+							<td title={company.assignedEmployee.toString()}>{company.assignedEmployee}</td>
+							<td title={company.createdAt.toString()}>{formatDate(company.createdAt)}</td>
 							<td>
 								<button className='button' onClick={() => onEditClick(company)}>
 									<FaPencil className='button-icon' />
