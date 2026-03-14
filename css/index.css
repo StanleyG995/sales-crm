@@ -154,6 +154,11 @@ html {
   border-radius: 12px;
   overflow: hidden;
 }
+.table-pagination {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
 
 .table-row td, th {
   border: none;

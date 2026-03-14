@@ -180,6 +180,12 @@ html {
     outline: 1px solid #bbb;
     border-radius: 12px;
     overflow: hidden;
+
+    &-pagination {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+    }
 }
 
 .table-row td, th {

@@ -77,9 +77,9 @@ const Table = ({
 					))}
 				</tbody>
 			</table>
-			<nav aria-label='table pagination'>
-				<button onClick = {() => {if(page > 0) {setPage(prev => prev-1)}}}><FaArrowLeft/></button>
-				<button onClick = {() => {if(page < (companies.length/10)-1) {setPage(prev => prev+1)}}}><FaArrowRight/></button>
+			<nav aria-label='table pagination' className='table-pagination'>
+				<button className='button' onClick = {() => {if(page > 0) {setPage(prev => prev-1)}}}><FaArrowLeft/></button>
+				<button className='button' onClick = {() => {if(page < (companies.length/10)-1) {setPage(prev => prev+1)}}}><FaArrowRight/></button>
 			</nav>
 		</>
 	)
