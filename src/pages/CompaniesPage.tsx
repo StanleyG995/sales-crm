@@ -23,7 +23,7 @@ const CompaniesPage = () => {
 	const [companyToEdit, setCompanyToEdit] = useState<CompanyProps | null>(null)
 
 	const [page, setPage] = useState(0)
-	const rowsPerPage = 5
+	const rowsPerPage = 10
 
 	return (
 		<section

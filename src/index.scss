@@ -183,6 +183,20 @@ html {
     border-radius: 12px;
     overflow: hidden;
 
+    &-rows-control{
+        padding: 10px 20px;
+        border: 1px solid #333;
+        border-radius: 12px;
+        margin-top: 12px;
+    }
+
+    &-controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     &-pagination {
         display: flex;
         gap: 12px;
