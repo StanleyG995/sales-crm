@@ -161,12 +161,8 @@ html {
         }
 
 
-        sidebar {
-            padding: 30px;
-            background: #fafafa;
-            border-right: solid 1px #bbb;
-            min-width: 250px;
-            max-width: 300px;
+    
+           
             
             &-title {
                 margin-bottom: 20px;
@@ -179,7 +175,7 @@ html {
             }
         }
     }
-}
+
 
 .table {
     border-collapse: collapse;
@@ -192,8 +188,9 @@ html {
         gap: 12px;
         margin: 0 auto;
         margin-top: 20px;
-        justify-content: center;
-        
+        justify-content: space-between;
+        min-width: 600px;
+        max-width: 600px;
 
         &-control {
             border:none;
