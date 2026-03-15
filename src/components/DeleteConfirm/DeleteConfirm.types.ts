@@ -1,8 +1,7 @@
-import type { CompanyProps } from '../../features/companies/Company.type'
+import type { CompanyProps } from "../../data/Company.type"
 
 export interface DeleteConfirmProps {
-    company: CompanyProps;
-    onCancel: () => void;
-    onConfirm: () => void;
-  }
-  
+	company: CompanyProps
+	onCancel: () => void
+	onConfirm: () => void
+}

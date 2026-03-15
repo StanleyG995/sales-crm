@@ -1,6 +1,6 @@
-import type { CompanyType } from "../features/companies/Company.type"
+import type { CompanyProps } from "./Company.type"
 
-export const companiesData: CompanyType[] = [
+export const companiesData: CompanyProps[] = [
 	{
 		id: 1,
 		companyName: "AlfaTech Solutions",

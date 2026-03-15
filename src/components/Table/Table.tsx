@@ -11,7 +11,7 @@ const Table = ({
   renderSortArrow,
 }: TableProps) => {
   const [page, setPage] = useState<number>(0);
-  const rowsPerPage = 10;
+  const rowsPerPage = 5;
   const totalPages = Math.ceil(companies.length / rowsPerPage);
 
   useEffect(() => console.log(page), [page]);

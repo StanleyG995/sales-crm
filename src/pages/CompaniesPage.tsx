@@ -10,7 +10,7 @@ import { useCompanies } from "../features/companies/useCompanies"
 
 import { FaSquarePlus } from "react-icons/fa6"
 
-import type { CompanyProps } from "../features/companies/Company.type"
+import type { CompanyProps } from "../data/Company.type"
 
 const CompaniesPage = () => {
 	const { isOpen, toggle } = useModal()
@@ -28,7 +28,7 @@ const CompaniesPage = () => {
 					? "app-main app-main--scroll-disabled"
 					: "app-main app-main--scroll-enabled"
 			}>
-      <h2 className='page-title'>Companies</h2>
+			<h2 className='page-title'>Companies</h2>
 			<button
 				style={{ marginBottom: "30px" }}
 				className='button button--primary'

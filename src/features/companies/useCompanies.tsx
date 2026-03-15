@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-import type { CompanyProps } from "./Company.type"
+import type { CompanyProps } from "../../data/Company.type"
 import { companiesData } from "../../data/companies"
 
 export const useCompanies = () => {
@@ -30,9 +30,7 @@ export const useCompanies = () => {
 	}
 
 	const editCompany = (company: CompanyProps) => {
-		setCompanies(prev =>
-			prev.map(c => (c.id === company.id ? company : c))
-		  )
+		setCompanies(prev => prev.map(c => (c.id === company.id ? company : c)))
 	}
 
 	const deleteCompany = (company: CompanyProps) => {
