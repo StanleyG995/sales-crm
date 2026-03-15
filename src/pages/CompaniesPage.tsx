@@ -1,7 +1,8 @@
 import { useState } from "react"
 
 import Modal from "../components/Modal/Modal"
-import Table from "../components/Table/Table"
+import { Table } from "../components/Table/Table"
+import { companyColumns } from "../features/companies/companies.columns"
 import CompanyForm from "../components/CompanyForm/CompanyForm"
 import DeleteConfirm from "../components/DeleteConfirm/DeleteConfirm"
 
@@ -20,6 +21,9 @@ const CompaniesPage = () => {
 		null
 	)
 	const [companyToEdit, setCompanyToEdit] = useState<CompanyProps | null>(null)
+
+	const [page, setPage] = useState(0)
+	const rowsPerPage = 5
 
 	return (
 		<section
@@ -68,7 +72,10 @@ const CompaniesPage = () => {
 			)}
 
 			<Table
-				companies={companiesHook.companies}
+				data={companiesHook.companies}
+				columns={companyColumns}
+				page={page}
+				rowsPerPage={rowsPerPage}
 				onDeleteClick={setCompanyToDelete}
 				onEditClick={company => {
 					setCompanyToEdit(company)

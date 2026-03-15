@@ -51,6 +51,18 @@ html {
     z-index: 1;
     overflow: hidden;
 
+    &-text {
+        background: none;
+        border: none;
+        color: #000;
+
+        &--danger { 
+            background: none;
+            border: none;
+            color: #de0707;
+        }
+    }
+
     &--primary {
         background: #DE5D07;
         border: 1px solid #DE5D07;
@@ -78,17 +90,7 @@ html {
 
     }
 
-    &--danger {
-        background:  #de0707;
-        color: white;
-        border: none;
-
-        &--text {
-            background: none;
-            color: #de0707;
-            border: none;
-        }
-    }
+    
 
     &-icon {
         margin-right: 12px; 

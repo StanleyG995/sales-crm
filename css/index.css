@@ -28,6 +28,10 @@ html {
   font-size: 14px;
 }
 
+.page-title {
+  margin-bottom: 20px;
+}
+
 .button {
   position: relative;
   display: flex;
@@ -42,6 +46,16 @@ html {
   cursor: pointer;
   z-index: 1;
   overflow: hidden;
+}
+.button-text {
+  background: none;
+  border: none;
+  color: #000;
+}
+.button-text--danger {
+  background: none;
+  border: none;
+  color: #de0707;
 }
 .button--primary {
   background: #DE5D07;
@@ -64,16 +78,6 @@ html {
 }
 .button--primary:hover::after {
   transform: translate(-50%, -50%) scale(3);
-}
-.button--danger {
-  background: #de0707;
-  color: white;
-  border: none;
-}
-.button--danger--text {
-  background: none;
-  color: #de0707;
-  border: none;
 }
 .button-icon {
   margin-right: 12px;
@@ -157,7 +161,27 @@ html {
 .table-pagination {
   display: flex;
   gap: 12px;
-  margin-top: 12px;
+  margin: 0 auto;
+  margin-top: 20px;
+  justify-content: center;
+}
+.table-pagination-control {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px;
+  transition: color 0.2s ease-in-out;
+}
+.table-pagination-control:hover, .table-pagination-control--active {
+  color: #DE5D07;
+  font-weight: bold;
+}
+.table-pagination-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 16px;
 }
 
 .table-row td, th {
