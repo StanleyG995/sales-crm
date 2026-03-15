@@ -25,14 +25,14 @@ const Table = ({
 
     for (let i = 0; i < totalPages; i++) {
       if (
-        i === 0 || // pierwsza strona
-        i === totalPages - 1 || // ostatnia strona
-        (i >= page - 1 && i <= page + 1) // bieżąca strona +/-1
+        i === 0 ||
+        i === totalPages - 1 ||
+        (i >= page - 1 && i <= page + 1)
       ) {
         pages.push(
           <li key={i}>
             <button
-              className={i === page ? "active button" : "button"}
+              className={i === page ? "table-pagination-control table-pagination-control--active" : "table-pagination-control"}
               onClick={() => handlePageClick(i)}
               aria-current={i === page ? "page" : undefined}
             >
@@ -44,7 +44,7 @@ const Table = ({
         (i === page - 2 && page > 2) ||
         (i === page + 2 && page < totalPages - 3)
       ) {
-        pages.push(<li key={i}>...</li>);
+        pages.push(<li className='table-pagination-control' key={i}>...</li>);
       }
     }
 
@@ -107,13 +107,13 @@ const Table = ({
       </table>
 
       <nav aria-label="table pagination" className="table-pagination">
-        <button className='button' onClick={() => handlePageClick(page - 1)} disabled={page === 0}>
+        <button className='table-pagination-control' onClick={() => handlePageClick(page - 1)} disabled={page === 0}>
           <FaArrowLeft />
         </button>
 
         <ul className="table-pagination-numbers">{renderPageNumbers()}</ul>
 
-        <button className='button' onClick={() => handlePageClick(page + 1)} disabled={page === totalPages - 1}>
+        <button className='table-pagination-control' onClick={() => handlePageClick(page + 1)} disabled={page === totalPages - 1}>
           <FaArrowRight />
         </button>
       </nav>
