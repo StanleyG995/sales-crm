@@ -61,7 +61,7 @@ const CompaniesPage = () => {
 					isOpen={!!companyToDelete}
 					onClose={() => setCompanyToDelete(null)}>
 					<DeleteConfirm
-						company={companyToDelete}
+						item={companyToDelete}
 						onCancel={() => setCompanyToDelete(null)}
 						onConfirm={() => {
 							companiesHook.deleteCompany(companyToDelete)

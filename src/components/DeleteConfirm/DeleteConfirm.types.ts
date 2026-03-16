@@ -1,7 +1,6 @@
-import type { CompanyProps } from "../../data/Company.type"
-
-export interface DeleteConfirmProps {
-	company: CompanyProps
+export interface DeleteConfirmProps<T> {
+	item: T
+	message?: string
 	onCancel: () => void
 	onConfirm: () => void
 }
