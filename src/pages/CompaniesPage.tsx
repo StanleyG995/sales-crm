@@ -23,7 +23,7 @@ const CompaniesPage = () => {
 	const [companyToEdit, setCompanyToEdit] = useState<CompanyProps | null>(null)
 
 	const [page, setPage] = useState(0)
-	const rowsPerPage = 10
+	const [rowsPerPage, setRowsPerPage] = useState(10)
 
 	return (
 		<section
@@ -83,7 +83,9 @@ const CompaniesPage = () => {
 				}}
 				toggleSort={companiesHook.toggleSort}
 				renderSortArrow={companiesHook.renderSortArrow}
-			/>
+				setPage={setPage}
+  				setRowsPerPage={setRowsPerPage}			
+				/>
 		</section>
 	)
 }

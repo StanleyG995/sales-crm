@@ -10,7 +10,10 @@ export interface TableProps<T> {
 	columns: TableColumn<T>[]
 	page: number
 	rowsPerPage: number
-  
+	
+	setPage?: (page: number) => void
+	setRowsPerPage?: (rows: number) => void
+	
 	toggleSort?: (key: keyof T) => void
 	renderSortArrow?: (key: keyof T) => React.ReactNode
   

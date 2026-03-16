@@ -1,4 +1,3 @@
-import { useState } from "react"
 import type { TableProps } from "./Table.types"
 import {
 	FaTrashCan,
@@ -10,20 +9,21 @@ import {
 export function Table<T extends { id: number }>({
 	data,
 	columns,
+	page,
+	rowsPerPage,
 	onDeleteClick,
 	onEditClick,
 	toggleSort,
 	renderSortArrow,
+	setPage,
+	setRowsPerPage
 }: TableProps<T>) {
-	const [page, setPage] = useState(0)
-
-	const [rowsPerPage, setRowsPerPage] = useState(5)
+	
 	const totalPages = Math.ceil(data.length / rowsPerPage)
 
 	const handlePageClick = (newPage: number) => {
-		if (newPage >= 0 && newPage < totalPages) setPage(newPage)
+		if (newPage >= 0 && newPage < totalPages) setPage?.(newPage)
 	}
-
 	const renderPageNumbers = () => {
 		const pages = []
 
@@ -137,13 +137,14 @@ export function Table<T extends { id: number }>({
 				</nav>
 
        <p>Rows per page:</p>
-				<select
-        className = 'table-rows-control'
-					value={rowsPerPage}
-					onChange={e => {
-						setRowsPerPage(Number(e.target.value))
-						setPage(0)
-					}}>
+	   <select
+	   className='table-rows-control'
+	value={rowsPerPage}
+	onChange={e => {
+		setRowsPerPage?.(Number(e.target.value))
+		setPage?.(0)
+	}}
+>
 					<option value={5}>5</option>
 					<option value={10}>10</option>
 					<option value={20}>20</option>
