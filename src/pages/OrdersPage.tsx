@@ -3,7 +3,7 @@ import { useState } from "react"
 import Modal from "../components/Modal/Modal"
 import { Table } from "../components/Table/Table"
 import { orderColumns } from "../features/orders/orders.columns"
-// import OrderForm from "../components/OrderForm/OrderForm"
+import OrderForm from "../components/OrderForm/OrderForm"
 import DeleteConfirm from "../components/DeleteConfirm/DeleteConfirm"
 
 import { useModal } from "../components/Modal/useModal"
@@ -45,7 +45,7 @@ const OrdersPage = () => {
 					toggle()
 					setOrderToEdit(null)
 				}}>
-				{/* <OrderForm
+				<OrderForm
 					addOrder={ordersHook.addOrder}
 					editOrder={ordersHook.editOrder}
 					onSuccess={() => {
@@ -53,7 +53,7 @@ const OrdersPage = () => {
 						setOrderToEdit(null)
 					}}
 					editedOrder={orderToEdit}
-				/> */}
+				/>
 			</Modal>
 
 			{orderToDelete && (

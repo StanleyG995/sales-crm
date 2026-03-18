@@ -12,7 +12,6 @@ export interface OrderProduct {
     companyId: number
     companyName: string
     employee: string
-    createdBy: string
     orderDate: string
     orderStatus: "pending" | "completed" | "cancelled"
     paymentStatus: "unpaid" | "paid" | "refunded"

@@ -11,8 +11,6 @@ export const orderColumns: TableColumn<OrderProps>[] = [
 
   { key: "employee", header: "Employee" },
 
-  { key: "createdBy", header: "Created by" },
-
   {
     key: "orderDate",
     header: "Order date",
@@ -24,11 +22,23 @@ export const orderColumns: TableColumn<OrderProps>[] = [
 
   { key: "paymentStatus", header: "Payment" },
 
-  { key: "salesStage", header: "Stage" },
+  {
+    key: "products",
+    header: "Products",
+    render: (o) => (
+      <ul>
+        {o.products.map(p => (
+          <li key={p.id} style={{margin: "5px 0", padding: "5px 0", borderBottom: "solid 1px #dddddd"}}>
+            • <strong>{p.quantity} x </strong>{p.name} | {p.price} PLN | <strong>{p.total} PLN</strong> 
+          </li>
+        ))}
+      </ul>
+    ),
+  },
 
   {
     key: "total",
-    header: "Total (PLN)",
+    header: "Total",
     sortable: true,
     render: (o) => o.total.toLocaleString("pl-PL"),
   },
